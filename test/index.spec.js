@@ -4,8 +4,7 @@ import{
     recognizelflsFile,
 } from '../src/models/links.js';
 
-const inputTrue = 'C:\\mi-ruta-absoluta'; 
-const inputFalse = '.\\mi-ruta-relativa';
+let paths = require('path');
 
 describe ('evaluatePath', () => {
     it.only ('debería ser igual a una función', () => {
@@ -26,8 +25,8 @@ describe ('transformToAbsPath', () => {
     it.only ('deberia retornar dato tipo string', () => {
         expect (typeof transformToAbsPath ('.\\mi-ruta-relativa')) .toEqual ('string');
     });
-    it.only ('debería retornar  ruta absoluta a partir de ruta relativa', () => {
-        expect (transformToAbsPath('.\\mi-ruta-relativa')) .toEqual (paths.normalize('C:\\mi-ruta-absoluta'))
+    it.only ('debería retornar una ruta absoluta al ingresar una ruta relativa', () => {
+        expect (transformToAbsPath ('.\\mi-ruta-relativa')) .toEqual (paths.normalize('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\mi-ruta-relativa'));
     });
 });
 
