@@ -1,9 +1,8 @@
-import { fstat } from 'fs';
 
 let paths = require('path');
 const fs = require('fs');
 const myMarked = require('marked');
-const linkCheck = require(' link-check ');   
+const linkCheck = require('link-check');   
 
 
 export const evaluatePath = (path) => {
@@ -35,7 +34,6 @@ export const getMDContent = (pathAbsMD) => {
     extraclink.push({href, text, file: pathAbsMD });
     return '';
   };
-
   myMarked(data, {renderer});
   return extraclink;
 };
@@ -50,6 +48,12 @@ export const getMDContent = (pathAbsMD) => {
 //   });
 // };
 
-export const verifyLink = (err, result) => {
-  
-}
+export const verifyLink = () => {
+  linkCheck(href, (err, result) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(`${result.link} is ${result.statusCode}`);
+  });
+};
