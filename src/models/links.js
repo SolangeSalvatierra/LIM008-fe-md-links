@@ -3,6 +3,7 @@ import { fstat } from 'fs';
 let paths = require('path');
 const fs = require('fs');
 const myMarked = require('marked');
+const linkCheck = require(' link-check ');   
 
 
 export const evaluatePath = (path) => {
@@ -27,10 +28,10 @@ export const validateExtMD = (pathAbs) => {
 };
 
 export const getMDContent = (pathAbsMD) => {
-  const data = (fs.readFileSync(pathAbsMD, 'utf8').toString());
+  const data = (fs.readFileSync(pathAbsMD, 'utf8'));
   let extraclink = [];
   const renderer = new myMarked.Renderer();
-  renderer.extraclink = (href, title, text) => {
+  renderer.link = (href, title, text) => {
     extraclink.push({href, text, file: pathAbsMD });
     return '';
   };
@@ -38,3 +39,17 @@ export const getMDContent = (pathAbsMD) => {
   myMarked(data, {renderer});
   return extraclink;
 };
+
+// export const verifyLink = (href) => {
+//   const link = linkCheck(href, (err, result) => {
+//     if (err) {
+//       console.error(error);
+//       return;
+//     }
+//     console.log(`${result.link} is ${result.status}`);
+//   });
+// };
+
+export const verifyLink = (err, result) => {
+  
+}

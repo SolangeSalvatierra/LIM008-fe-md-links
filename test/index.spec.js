@@ -4,6 +4,7 @@ import {
   recognizeIfIsFile,
   validateExtMD,
   getMDContent,
+  verifyLink,
 
 } from '../src/models/links.js';
 
@@ -29,8 +30,8 @@ describe('transformToAbsPath', () => {
     expect(typeof transformToAbsPath('C:\\mi-ruta-absoluta')).toEqual('string');
   });
   it('debería retornar una ruta absoluta al ingresar una ruta relativa', () => {
-    // expect (transformToAbsPath ('.\\mi-ruta-relativa')) .toEqual (paths.normalize('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\mi-ruta-relativa'));
-    expect(transformToAbsPath('.\\mi-ruta-relativa')).toEqual(paths.normalize('D:\\data ddd\\LABORATORIA\\Markdown\\LIM008-fe-md-links\\mi-ruta-relativa'));
+    expect(transformToAbsPath('.\\mi-ruta-relativa')) .toEqual(paths.normalize('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\mi-ruta-relativa'));
+    // expect(transformToAbsPath('.\\mi-ruta-relativa')).toEqual(paths.normalize('D:\\data ddd\\LABORATORIA\\Markdown\\LIM008-fe-md-links\\mi-ruta-relativa'));
   });
 });
 
@@ -38,7 +39,7 @@ describe('recognizeIfIsFile', () => {
   it('debería ser una función', () => {
     expect(typeof recognizeIfIsFile).toBe('function');
   });
-  it('debería retornar un valor tipo booleando', () => {
+  it.skip('debería retornar un valor tipo booleando', () => {
     expect(recognizeIfIsFile('D:/data ddd/LABORATORIA/Markdown/LIM008-fe-md-links/test')).toEqual(false) ;
   }); 
 });
@@ -61,9 +62,21 @@ describe('getMDContent', () => {
   // });
   // console.log(getMDContent('D:/data ddd/LABORATORIA/Markdown/LIM008-fe-md-links/README.md'));
 
-  it('Debería convertit un archivo .MD a HTML', () => {
-    expect(typeof getMDContent('D:/data ddd/LABORATORIA/Markdown/LIM008-fe-md-links/README.md')).toEqual('object');
+  it('Debería convertir un archivo .MD a HTML', () => {
+    // expect(typeof getMDContengetMDContentt('D:/data ddd/LABORATORIA/Markdown/LIM008-fe-md-links/README.md')).toEqual('object');
+    expect(typeof getMDContent('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\README.md')).toEqual('object');
   });
-  console.log(getMDContent('D:/data ddd/LABORATORIA/Markdown/LIM008-fe-md-links/README.md'));
+  console.log(getMDContent('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\README.md'));
 });
 
+describe('verifyLink', () => {
+  it.only('debería ser una función', () => {
+    expect(typeof verifyLink).toBe('function');
+  });
+  
+  it('Debería convertit un archivo .MD a HTML', () => {
+    // expect(typeof getMDContengetMDContentt('D:/data ddd/LABORATORIA/Markdown/LIM008-fe-md-links/README.md')).toEqual('object');
+    expect(typeof verifyLink('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\README.md')).toEqual('object');
+  });
+  // console.log(getMDContent('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\README.md'));
+});
