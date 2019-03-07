@@ -1,9 +1,6 @@
-
 let paths = require('path');
 const fs = require('fs');
 const myMarked = require('marked');
-const linkCheck = require('link-check');   
-
 
 export const evaluatePath = (path) => {
   return (paths.isAbsolute(path));
@@ -18,42 +15,25 @@ export const transformToAbsPath = (path) => {
   return (paths.resolve(path));
 };
 
-export const recognizeIfIsFile = (pathAbs) => { 
+export const recognizeIfIsFile = (pathAbs) => {
   return (fs.statSync(pathAbs).isFile());
 };
 
-export const validateExtMD = (pathAbs) => { 
+export const validateExtMD = (pathAbs) => {
   return (paths.extname(pathAbs));
 };
 
 export const getMDContent = (pathAbsMD) => {
   const data = (fs.readFileSync(pathAbsMD, 'utf8'));
-  let extraclink = [];
+  let arrLinks = [];
   const renderer = new myMarked.Renderer();
   renderer.link = (href, title, text) => {
-    extraclink.push({href, text, file: pathAbsMD });
+    text = text.slice(0, 50);
+    arrLinks.push({ href, text, file: pathAbsMD });
     return '';
   };
-  myMarked(data, {renderer});
-  return extraclink;
+  myMarked(data, { renderer });
+  return arrLinks;
 };
 
-// export const verifyLink = (href) => {
-//   const link = linkCheck(href, (err, result) => {
-//     if (err) {
-//       console.error(error);
-//       return;
-//     }
-//     console.log(`${result.link} is ${result.status}`);
-//   });
-// };
 
-export const verifyLink = () => {
-  linkCheck(href, (err, result) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(`${result.link} is ${result.statusCode}`);
-  });
-};

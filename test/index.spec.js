@@ -4,8 +4,6 @@ import {
   recognizeIfIsFile,
   validateExtMD,
   getMDContent,
-  verifyLink,
-
 } from '../src/models/links.js';
 
 let paths = require('path');
@@ -66,17 +64,6 @@ describe('getMDContent', () => {
     // expect(typeof getMDContengetMDContentt('D:/data ddd/LABORATORIA/Markdown/LIM008-fe-md-links/README.md')).toEqual('object');
     expect(typeof getMDContent('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\README.md')).toEqual('object');
   });
-  console.log(getMDContent('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\README.md'));
-});
-
-describe('verifyLink', () => {
-  it.only('debería ser una función', () => {
-    expect(typeof verifyLink).toBe('function');
-  });
-  
-  it('Debería convertit un archivo .MD a HTML', () => {
-    // expect(typeof getMDContengetMDContentt('D:/data ddd/LABORATORIA/Markdown/LIM008-fe-md-links/README.md')).toEqual('object');
-    expect(typeof verifyLink('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\README.md')).toEqual('object');
-  });
   // console.log(getMDContent('D:\\PROYECTOS solange\\Markdown Links\\LIM008-fe-md-links\\README.md'));
 });
+
