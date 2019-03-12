@@ -1,7 +1,6 @@
 let paths = require('path');
 const fs = require('fs');
 const myMarked = require('marked');
-const linkCheck = require('link-check');
 const pathAbsMD = 'C:\\Users\\Maria Paula\\Desktop\\markdown\\README.md';
 
 /**
@@ -69,6 +68,6 @@ export const getMDContent = (pathAbsMD) => {
   return arrLinks;
 };
 
-console.log(getMDContent('D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md'));
+// console.log(getMDContent('D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md'));
 
 

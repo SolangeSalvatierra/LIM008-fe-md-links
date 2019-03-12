@@ -20,6 +20,12 @@ const ouput1 = [ { href: 'https://github.com/soumak77llll/firebase-mock',
   resultstatus: 404,
   value: 'Fail' } ];
 
+describe('validateLinks', () => {
+  it('debería ser igual a una función', () => {
+    expect(typeof validateLinks).toBe('function');
+  });
+});
+
 test('Debería retornar el objeto ingresado adicionando las propiedades status 200 y value OK', (done) => {
   validateLinks(input).then((result) => {
     expect(result).toEqual(ouput);
@@ -33,4 +39,3 @@ test('Debería retornar el objeto ingresado adicionando las propiedades status 4
     done();
   });
 });
-

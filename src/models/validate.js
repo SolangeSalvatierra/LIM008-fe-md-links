@@ -26,9 +26,10 @@ export const validateLinks = (arrObjec) => {
   }));
   return Promise.all(resulArray);
 };
+
 validateLinks([{ href: 'https://github.com/soumak77llll/firebase-mock',
   text: 'firebase-mock',
-  file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md' }]).then((result) => console.log(result));
-// [{ href: 'https://www.google.com',
-//   text: '1234567890-1234567890-1234567890-1234567890-123456',
-//   file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md' }]).then((result) => console.log(result));
+  file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md' },
+{ href: 'https://www.google.com',
+  text: '1234567890-1234567890-1234567890-1234567890-123456',
+  file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md'}]).then((result) => console.log(result));
