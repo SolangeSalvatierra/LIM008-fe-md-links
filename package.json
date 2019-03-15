@@ -2,7 +2,7 @@
   "name": "solangesalvatierra-mdlinks",
   "version": "1.0.0",
   "description": "md-links lea analiza archivos en formato Markdown, para verificar los links que contengan y reportar algunas estadísticas.",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
   "keywords": [
     "javascript",
     "npm",
@@ -10,7 +10,7 @@
   ],
   "license": "MIT",
   "bin": {
-    "md-links": "lib/cli.js"
+    "md-links": "./lib/cli.js"
   },
   "repositary": {
     "type": "git",
