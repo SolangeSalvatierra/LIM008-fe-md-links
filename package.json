@@ -14,7 +14,7 @@
   },
   "repositary": {
     "type": "git",
-    "url": "https://github.com/SolangeSalvatierra/md-links"
+    "url": "git+https://github.com/SolangeSalvatierra/md-links.git"
   },
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",

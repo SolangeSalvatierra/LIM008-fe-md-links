@@ -7,7 +7,7 @@ const input = [{ href: 'https://github.com/mikkopaderes/mock-cloud-firestore',
 const ouput = [ { href: 'https://github.com/mikkopaderes/mock-cloud-firestore',
   text: 'mock-cloud-firestore',
   file: `${process.cwd()}\\test\\pruebastest\\Readme.md`,
-  resultstatus: 200,
+  status: 200,
   value: 'OK' } ];
 
 const input1 = [{ href: 'https://github.com/soumak77llll/firebase-mock',
@@ -17,7 +17,7 @@ const input1 = [{ href: 'https://github.com/soumak77llll/firebase-mock',
 const ouput1 = [ { href: 'https://github.com/soumak77llll/firebase-mock',
   text: 'firebase-mock',
   file: `${process.cwd()}\\test\\pruebastest\\Readme.md`,
-  resultstatus: 404,
+  status: 404,
   value: 'Fail' } ];
 
 describe('validateLinks', () => {
