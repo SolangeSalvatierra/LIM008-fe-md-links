@@ -9,7 +9,7 @@ export const mdLinks = (path, options) => {
     pathAbs = path;
   };
   return new Promise((resolve) => {
-    if (options === undefined) {
+    if (!options.validate) {
       resolve(getMDContent(contenFileMD(pathAbs)));
     } if (options.validate) {
       resolve(validateLinks(getMDContent(contenFileMD(pathAbs))));
@@ -20,5 +20,5 @@ export const mdLinks = (path, options) => {
 // mdLinks('D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest', {validate: true})
 //   .then(res => console.log(res));
 
-// mdLinks('D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest')
+// mdLinks('./test/pruebastest', {validate: true})
 //   .then(res => console.log(res));

@@ -1,5 +1,5 @@
 {
-  "name": "solangesalvatierra-mdlinks",
+  "name": "md-links",
   "version": "1.0.0",
   "description": "md-links lea analiza archivos en formato Markdown, para verificar los links que contengan y reportar algunas estadísticas.",
   "main": "./lib/index.js",
