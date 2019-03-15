@@ -17,8 +17,4 @@ export const mdLinks = (path, options) => {
   });
 };
 
-// mdLinks('D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest', {validate: true})
-//   .then(res => console.log(res));
 
-// mdLinks('./test/pruebastest', {validate: true})
-//   .then(res => console.log(res));
