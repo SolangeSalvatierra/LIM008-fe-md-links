@@ -3,13 +3,13 @@ import {validateLinks} from './validate.js';
 export const pathAbsMD = [
   { href: 'https://github.com/soumak77llll/firebase-mock',
     text: 'firebase-mock',
-    file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md' },
+    file: `${process.cwd()}\\test\\pruebastest\\Readme.md`},
   { href: 'https://www.google.com',
     text: '1234567890-1234567890-1234567890-1234567890-123456',
-    file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md'},
+    file: `${process.cwd()}\\test\\pruebastest\\Readme.md`},
   { href: 'https://www.google.com',
     text: '1234567890-1234567890-1234567890-1234567890-123456',
-    file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md'}
+    file: `${process.cwd()}\\test\\pruebastest\\Readme.md`}
 ];
 
 export const statsLinks = (arrObjLinks) => {
@@ -18,7 +18,7 @@ export const statsLinks = (arrObjLinks) => {
     validate.then((links) => {
       const total = links.length;
       const uniqueLinks = [...new Set(links.map(links => links.href))].length;
-      res(`Total : ${total} Unique: ${uniqueLinks}`);
+      res(`Total : ${total} \nUnique: ${uniqueLinks}`);
     });
   });
 };

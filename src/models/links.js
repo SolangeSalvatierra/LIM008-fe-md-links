@@ -59,7 +59,7 @@ export const contenFileMD = (route) => {
   return arrMD;
 };
 
-// console.log(contenFileMD('D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest'));
+// console.log(contenFileMD(`${process.cwd()}\\test\\pruebastest`));
 
 /**
  * @function {captura los elemento de los archivos MD} 

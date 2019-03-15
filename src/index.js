@@ -18,3 +18,5 @@ export const mdLinks = (path, options) => {
 };
 
 
+// mdLinks('test\\pruebastest', {validate: true})
+//   .then(res => console.log(res));

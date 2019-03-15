@@ -1,5 +1,7 @@
 import {statsLinks, statLinksBroken, pathAbsMD} from '../src/models/stats.js';
 
+const ouput = 'Total : 3 \nUnique: 2';
+
 describe('statsLinks', () => {
   it('debería ser igual a una función', () => {
     expect(typeof statsLinks).toBe('function');
@@ -9,7 +11,7 @@ describe('statsLinks', () => {
 
 test('Debería retornar el total de links y cuantos de los links no se repiten', (done) => {
   statsLinks(pathAbsMD).then((respuesta) => {
-    expect(respuesta).toEqual('Total : 3 Unique: 2');
+    expect(respuesta).toEqual(ouput);
     done();
   });
 });
