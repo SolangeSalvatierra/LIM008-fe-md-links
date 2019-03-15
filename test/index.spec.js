@@ -1,4 +1,4 @@
-import {mdLinks} from '../src/index.js';
+const mdLinks = require('../src/index.js');
 const ouput = [ { href: 'https://github.com/soumak77llll/firebase-mock',
   text: 'firebase-mock',
   file: `${process.cwd()}\\test\\pruebastest\\Fail.md` },

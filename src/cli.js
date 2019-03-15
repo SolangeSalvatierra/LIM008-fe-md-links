@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {mdLinks} from './index.js';
+const mdLinks = require('./index.js');
 import {statsLinks, statLinksBroken} from './models/stats.js';
 
 const path = process.argv[2];

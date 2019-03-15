@@ -1,7 +1,7 @@
 import {evaluatePath, transformToAbsPath, contenFileMD, getMDContent} from './models/links.js';
 import {validateLinks} from './models/validate.js';
 
-export const mdLinks = (path, options) => {
+const mdLinks = (path, options) => {
   let pathAbs;
   if (!evaluatePath(path)) {
     pathAbs = transformToAbsPath(path);
@@ -16,7 +16,7 @@ export const mdLinks = (path, options) => {
     } 
   });
 };
-
+module.exports = mdLinks;
 
 // mdLinks('test\\pruebastest', {validate: true})
 //   .then(res => console.log(res));

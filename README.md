@@ -5,7 +5,7 @@
 
 Para instalar esta librería debemos ejecutar el siguiente comando
 
-`npm install SolangeSalvatierra/md-links  md-links`
+`npm install SolangeSalvatierra/md-links`
 
 ![md-links](https://user-images.githubusercontent.com/45084376/54441960-c19cc580-470b-11e9-85f9-2efaa6286eae.png)
 
