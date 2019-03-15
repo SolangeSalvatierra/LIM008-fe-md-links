@@ -1,6 +1,3 @@
-const linkCheck = require('link-check');
-let paths = require('path');
-const fs = require('fs');
 const fetch = require('node-fetch');   
 
 /**
@@ -10,26 +7,34 @@ const fetch = require('node-fetch');
  */
 
 export const validateLinks = (arrObjec) => {
-  const resulArray = arrObjec.map(links => new Promise((resolve, reject) => {
-    fetch(links.href)
-      .then(stat => {
-        if (stat.status >= 200 && stat.status < 400) {
-          links.resultstatus = stat.status; 
-          links.value = 'OK';
+  const resulArray = arrObjec.map(links => 
+    new Promise((resolve, reject) => {
+      fetch(links.href)
+        .then(stat => {
+          if (stat.status >= 200 && stat.status < 400) {
+            links.status = stat.status; 
+            links.value = 'OK';
+            resolve(links);
+          } else {
+            links.status = stat.status; 
+            links.value = 'Fail';
+            resolve(links);
+          }
+        }).catch(error => {
+          links.status = '';
+          links.value = 'No Found';
           resolve(links);
-        } else {
-          links.resultstatus = stat.status; 
-          links.value = 'Fail';
-          resolve(links);
-        }
-      }).catch(error => reject(error));
-  }));
+        });
+    }));
   return Promise.all(resulArray);
 };
 
-validateLinks([{ href: 'https://github.com/soumak77llll/firebase-mock',
-  text: 'firebase-mock',
-  file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md' },
-{ href: 'https://www.google.com',
-  text: '1234567890-1234567890-1234567890-1234567890-123456',
-  file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md'}]).then((result) => console.log(result));
+// validateLinks([{ href: 'https://github.com/soumak77llll/firebase-mock',
+//   text: 'firebase-mock',
+//   file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md' },
+// { href: 'https://www.google.com',
+//   text: '1234567890-1234567890-1234567890-1234567890-123456',
+//   file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md'},
+// { href: 'https://cvcvcxbb',
+//   text: '1234567890-1234567890-1234567890-1234567890-123456',
+//   file: 'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md'}]).then((result) => console.log(result));

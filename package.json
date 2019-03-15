@@ -1,8 +1,8 @@
 {
-  "name": "md-links",
+  "name": "solangesalvatierra-mdlinks",
   "version": "1.0.0",
-  "description": "Social Network @ Laboratoria",
-  "main": "cli.js",
+  "description": "md-links lea analiza archivos en formato Markdown, para verificar los links que contengan y reportar algunas estadísticas.",
+  "main": "lib/index.js",
   "keywords": [
     "javascript",
     "npm",
@@ -10,7 +10,11 @@
   ],
   "license": "MIT",
   "bin": {
-    "md-links": "./cli.js"
+    "md-links": "lib/cli.js"
+  },
+  "repositary": {
+    "type": "git",
+    "url": "https://github.com/SolangeSalvatierra/md-links"
   },
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",

@@ -1,7 +1,7 @@
-let paths = require('path');
+let path = require('path');
 const fs = require('fs');
 const myMarked = require('marked');
-const pathAbsMD = 'C:\\Users\\Maria Paula\\Desktop\\markdown\\README.md';
+// const pathAbsMD = 'C:\\Users\\Maria Paula\\Desktop\\markdown\\README.md';
 
 /**
  * @function {para saber si la ruta es absoluta} 
@@ -9,7 +9,7 @@ const pathAbsMD = 'C:\\Users\\Maria Paula\\Desktop\\markdown\\README.md';
  * @return {retornar un valor boleando}
  */
 export const evaluatePath = (pathEvaluate) => {
-  return (paths.isAbsolute(pathEvaluate));
+  return path.isAbsolute(pathEvaluate);
 };
 
 /**
@@ -18,28 +18,15 @@ export const evaluatePath = (pathEvaluate) => {
  * @return {retornar una cadena string}
  */
 export const transformToAbsPath = (pathRelative) => {
-  return (paths.resolve(pathRelative));
+  return path.resolve(pathRelative);
 };
 
-// RECURSIVIDAD con directorio
-/**
- * @function {arrir directorio} 
- * @param {la ruta del archivo} path
- * @return {array,con nombres de los archivos}
- */
-export const readsDirectory = (router) => {
-  let filePathArray = [];
-  const arrayFileNames = fs.readdirSync(router); // return array con nombres de los elementos del directorio
-  arrayFileNames.forEach(fileName => { // recorro cada elemento del arreglo
-    let arrayOfFileRoute = paths.join(router, fileName); // concatena la ruta con archivo
-    const stat = fs.statSync(arrayOfFileRoute); // devuelve propiedades de cada archivo
-    if (stat.isDirectory()) { // si el elemento es un directorio
-      filePathArray = filePathArray.concat(readsDirectory(arrayOfFileRoute)); // volver a leer si es un directorio
-    } else {
-      filePathArray.push(arrayOfFileRoute);
-    }
-  });
-  return filePathArray;
+export const routeIsDirectory = (pathAbs) => {
+  return fs.lstatSync(pathAbs).isDirectory();
+};
+
+export const routeIsFile = (pathAbs) => {
+  return fs.lstatSync(pathAbs).isFile();
 };
 
 /**
@@ -48,26 +35,54 @@ export const readsDirectory = (router) => {
  * @return {boleando, tru si es MD / false }
  */
 export const validateExtMD = (pathAbs) => {
-  return (paths.extname(pathAbs));
+  return path.extname(pathAbs) === '.md';
 };
+
+// RECURSIVIDAD con directorio
+/**
+ * @function {concatena ruta y nombre}
+ * @param {ruta absoluta}
+ * @param {Debería retornar un array con todos las rutas MD}
+ */
+export const contenFileMD = (route) => {
+  let arrMD = [];
+  if (routeIsFile(route)) {
+    if (validateExtMD(route)) {
+      arrMD.push(route);
+    } 
+  } if (routeIsDirectory(route)) {
+    let arrFile = fs.readdirSync(route);
+    arrFile.forEach((fileName) => {
+      arrMD = arrMD.concat(contenFileMD(path.join(route, fileName)));
+    });
+  };
+  return arrMD;
+};
+
+// console.log(contenFileMD('D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest'));
 
 /**
  * @function {captura los elemento de los archivos MD} 
  * @param {archivo MD} path
  * @return {un array de objetos con href, title, text}
  */
-export const getMDContent = (pathAbsMD) => {
-  const data = (fs.readFileSync(pathAbsMD, 'utf8'));
+export const getMDContent = (arrMD) => {
   let arrLinks = [];
-  const renderer = new myMarked.Renderer();
-  renderer.link = (href, title, text) => {
-    text = text.slice(0, 50);
-    arrLinks.push({ href, text, file: pathAbsMD });
-  };
-  myMarked(data, { renderer });
+  arrMD.map((routeMD) => {
+    let data = (fs.readFileSync(routeMD, 'utf8'));
+    const renderer = new myMarked.Renderer();
+    renderer.link = (href, title, text) => {
+      text = text.slice(0, 50);
+      arrLinks.push({ href, text, file: routeMD });
+    };
+    myMarked(data, { renderer });
+  });
   return arrLinks;
 };
 
-// console.log(getMDContent('D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md'));
-
+// console.log(getMDContent([ 
+//   'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Fail.md',
+//   'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Ok.md',
+//   'D:\\PROYECTOS-solange\\Markdown-Links\\LIM008-fe-md-links\\test\\pruebastest\\Readme.md' 
+// ]));
 
