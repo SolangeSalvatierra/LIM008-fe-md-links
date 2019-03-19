@@ -107,3 +107,8 @@ Salida: true/false (booleano)
 * Ingresa: Array de objetos con href de cada link(array)
 * Proceso: Calcular total de links rotos.
 * Salida:links rotos (string)
+
+
+## Board para la implementación de la librería.
+
+![md-links](https://user-images.githubusercontent.com/45084376/54577525-2422e980-49ca-11e9-8d51-672f671d6a8f.png).
